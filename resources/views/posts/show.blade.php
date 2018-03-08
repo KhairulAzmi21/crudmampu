@@ -28,25 +28,30 @@
         <div class="card mt-4 card-primary">
             <div class="card-header">Comments</div>
             <div class="card-body">
-                <form class="form-control" action="#" method="post">
+                <form class="form-control" action="{{ route('comments.store', $post->id)}}" method="post">
+                                    @csrf
                     <div class="form-group">
                       <label for="comment">Comment:</label>
-                      <textarea class="form-control" rows="5" id="comment"></textarea>
+                      <textarea class="form-control" name="comment" rows="5" id="comment"></textarea>
                     </div>
+                      <!-- cara pertama -->
+                     <input type="hidden" name="post_id" value="{{ $post->id }}">
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
         </div>
+        @foreach($post->comments as $comment)
         <div class="card mt-4">
             <div class="card-header">Nama Orang
                     <span class="float-right">
-                        {{ $post->created_at->diffForHumans() }}
+                        {{ $comment->created_at->diffForHumans() }}
                     </span>
             </div>
             <div class="card-body">
-                Content Comment tersebut
+                {{ $comment->body }}
             </div>
         </div>
+        @endforeach
 
 </div>
 @endsection

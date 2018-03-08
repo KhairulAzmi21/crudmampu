@@ -29,11 +29,11 @@
                     </div>
                     <div class="form-group">
                         <label for="hash">Hashtag:</label>
-                        <input type="text" class="form-control" id="hash">
+                        <input type="text" name="hashtag" class="form-control" id="hash">
                     </div>
                     <div class="form-group">
                         <label for="color">Color:</label>
-                        <input type="color" class="form-control" id="color">
+                        <input type="color" name="color" class="form-control" id="color">
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>

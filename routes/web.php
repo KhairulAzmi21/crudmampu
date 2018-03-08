@@ -7,6 +7,13 @@ Route::get('/test', function () {
     dd($post_information->post);
 });
 Route::resource('/posts', 'PostController');
+Route::resource(
+    '/comments',
+    'CommentController',
+    ['only' => ['store']]
+);
+// sama je dgn atas
+ Route::post('/posts', 'PostController@store');
 
 // // route index
 // Route::get('/posts', 'PostController@index')->name('posts.index'); // name adalah nama untuk route;

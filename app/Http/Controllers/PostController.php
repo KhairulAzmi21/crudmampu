@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\PostInformation;
 
 class PostController extends Controller
 {
@@ -23,6 +24,7 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
+
         //validate
         $request->validate([
             'title' => 'required|min:5',
@@ -30,10 +32,26 @@ class PostController extends Controller
         ]);
 
         //create new object of class Post
+        //create ke table posts
         $post = new Post;
         $post->title = $request->title;
         $post->body  = $request->body;
         $post->save();
+        // create new object of class Post Information
+        // create ke table post_informations
+        $post_information           = new PostInformation;
+        $post_information->post_id  = $post->id;
+        $post_information->hashtag  = $request->hashtag;
+        $post_information->color    = $request->color;
+        $post_information->save();
+
+        //variable $post dibawah akan define post_id
+        //dlm table post_informations
+        $post_information = new PostInformation([
+            'hashtag' => $request->hashtag,
+            'color'   => $request->color
+        ]);
+        $post->post_information()->save($post_information);
         //menggunakan session untuk keluarkan alert flash message
         // flash(key, value);
         //kita set kan session key dan value dia
@@ -48,6 +66,7 @@ class PostController extends Controller
         //retrieve data daripada database single data
         // code dibawah sama dengan "select * from table posts where id = $id;"
         $post = Post::find($id);
+        //dd($post->comments);
         return view('posts.show', compact('post'));
     }
 
