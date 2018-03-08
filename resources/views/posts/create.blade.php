@@ -12,11 +12,11 @@
 
                     <div class="form-group">
                         <label for="title">Title</label>
-                        <input type="title" class="form-control" name="title" id="title">
+                        <input type="title" class="form-control" required name="title" value="{{ old('title') }}" id="title">
                     </div>
                     <div class="form-group">
                         <label for="body">Body:</label>
-                        <textarea class="form-control" id="body" name="body" rows="3"></textarea>
+                        <textarea class="form-control" id="body" required name="body" rows="3">{{ old('body') }}</textarea>
                     </div>
                     <div class="form-group">
                         <label for="category">Category:</label>

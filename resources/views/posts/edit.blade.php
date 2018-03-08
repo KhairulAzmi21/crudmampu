@@ -14,11 +14,11 @@
                     {{-- {{ METHOD_FIELD('PUT') }} --}}
                     <div class="form-group">
                         <label for="title">Title</label>
-                        <input type="title" class="form-control" name="title" id="title" value="{{ $post->title}}">
+                        <input type="title" class="form-control" name="title" id="title" value="{{ old('title',$post->title) }}">
                     </div>
                     <div class="form-group">
                         <label for="body">Body:</label>
-                        <textarea class="form-control" id="body" name="body" rows="3" >{{ $post->body}}</textarea>
+                        <textarea class="form-control" id="body" name="body" rows="3" >{{ old('body',$post->body) }}</textarea>
                     </div>
                     <div class="form-group">
                         <label for="category">Category:</label>

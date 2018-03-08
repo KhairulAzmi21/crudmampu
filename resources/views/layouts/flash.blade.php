@@ -12,7 +12,7 @@
 
 <!-- jika ada sebarang error selepas validate request. -->
 <!--  code dibawah akan display semua error tersebut -->
-{{-- @if ($errors->any())
+@if ($errors->any())
     <div class="alert alert-danger">
         <ul>
             @foreach ($errors->all() as $error)
@@ -20,4 +20,4 @@
             @endforeach
         </ul>
     </div>
-@endif --}}
+@endif

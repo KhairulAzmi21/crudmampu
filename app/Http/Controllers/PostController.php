@@ -23,6 +23,12 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
+        //validate
+        $request->validate([
+            'title' => 'required|min:5',
+            'body'  => 'required|min:10',
+        ]);
+
         //create new object of class Post
         $post = new Post;
         $post->title = $request->title;
@@ -59,6 +65,11 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
+        //validate
+        $request->validate([
+            'title' => 'required|min:5',
+            'body'  => 'required|min:10',
+        ]);
         // retrieve data from database with id = $id menggunakan Model Post;
         $post = Post::find($id);
         // update ke database
